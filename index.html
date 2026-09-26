@@ -1,191 +1,702 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>STOCK LEARNERS™ — Market Education on Telegram</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<title>STOCK LEARNERS™ | Stock Market Education</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
 <style>
-  :root {
-    --bg: #070F0C;
-    --bg2: #0B1C15;
-    --card: #10221B;
-    --line: rgba(230,225,210,0.09);
-    --ink: #F3F0E7;
-    --muted: #8FA098;
-    --emerald: #1F9C74;
-    --emerald-soft: #2CB988;
-    --gold: #C6A15B;
-    --gold-soft: #DCC08A;
-    box-sizing: border-box;
-    padding-top: env(safe-area-inset-top, 0px);
-    padding-bottom: env(safe-area-inset-bottom, 0px);
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+:root{
+  --bg:#05080b;
+  --bg2:#08120f;
+  --card:#0b1514;
+  --card2:#0f1d1a;
+  --green:#19d38a;
+  --green2:#0e9f68;
+  --white:#f5f7f6;
+  --muted:#899793;
+  --line:rgba(255,255,255,.08);
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:
+    radial-gradient(circle at 50% 0%,rgba(25,211,138,.12),transparent 32%),
+    linear-gradient(180deg,var(--bg),var(--bg2),var(--bg));
+  color:var(--white);
+  font-family:Inter,Arial,sans-serif;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+.container{
+  width:100%;
+  max-width:680px;
+  margin:auto;
+  padding:0 18px;
+}
+
+/* HEADER */
+header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(5,8,11,.86);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line);
+}
+
+.nav{
+  min-height:68px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.4px;
+}
+
+.brand img{
+  width:38px;
+  height:38px;
+  border-radius:10px;
+  object-fit:cover;
+  border:1px solid rgba(25,211,138,.45);
+  display:block;
+}
+
+.status{
+  border:1px solid rgba(25,211,138,.28);
+  background:rgba(25,211,138,.07);
+  color:#70e8b5;
+  border-radius:50px;
+  padding:7px 11px;
+  font-size:10px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.6px;
+}
+
+/* HERO */
+.hero{
+  text-align:center;
+  padding:48px 0 32px;
+  position:relative;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:35px;
+  width:220px;
+  height:220px;
+  transform:translateX(-50%);
+  background:rgba(25,211,138,.09);
+  filter:blur(65px);
+  border-radius:50%;
+  pointer-events:none;
+}
+
+.logo-box{
+  position:relative;
+  width:145px;
+  height:145px;
+  margin:0 auto 24px;
+  padding:7px;
+  border-radius:32px;
+  background:linear-gradient(145deg,#15241f,#08100e);
+  border:1px solid rgba(25,211,138,.38);
+  box-shadow:
+    0 0 0 5px rgba(25,211,138,.035),
+    0 25px 65px rgba(0,0,0,.45);
+}
+
+.logo-box img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  border-radius:25px;
+}
+
+.tag{
+  display:inline-block;
+  color:#69e6b1;
+  background:rgba(25,211,138,.08);
+  border:1px solid rgba(25,211,138,.2);
+  border-radius:50px;
+  padding:7px 13px;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  margin-bottom:19px;
+}
+
+h1{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(35px,9vw,58px);
+  line-height:1.04;
+  letter-spacing:-2px;
+  font-weight:700;
+}
+
+h1 span{
+  color:var(--green);
+}
+
+.subtitle{
+  max-width:510px;
+  margin:19px auto 27px;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.75;
+}
+
+/* CTA */
+.telegram-btn{
+  width:100%;
+  max-width:420px;
+  min-height:56px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin:auto;
+  text-decoration:none;
+  color:#02110a;
+  background:linear-gradient(135deg,#27e69b,#10b978);
+  border-radius:14px;
+  font-weight:800;
+  font-size:15px;
+  box-shadow:0 12px 35px rgba(25,211,138,.18);
+  transition:.2s ease;
+}
+
+.telegram-btn:hover{
+  transform:translateY(-2px);
+}
+
+.telegram-btn:active{
+  transform:scale(.98);
+}
+
+.telegram-btn svg{
+  width:20px;
+  height:20px;
+  fill:currentColor;
+}
+
+.note{
+  color:#687771;
+  font-size:11px;
+  margin-top:13px;
+}
+
+/* MARKET STRIP */
+.market-strip{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin:22px 0 10px;
+}
+
+.market-card{
+  background:rgba(255,255,255,.025);
+  border:1px solid var(--line);
+  border-radius:13px;
+  padding:13px 7px;
+  text-align:center;
+}
+
+.market-card small{
+  display:block;
+  color:#687771;
+  font-size:9px;
+  margin-bottom:4px;
+  text-transform:uppercase;
+}
+
+.market-card strong{
+  color:#72e9b6;
+  font-size:13px;
+}
+
+/* CONTENT */
+section{
+  padding:18px 0;
+}
+
+.section-title{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:21px;
+  margin-bottom:14px;
+}
+
+.card{
+  background:linear-gradient(145deg,rgba(15,29,26,.95),rgba(8,16,14,.95));
+  border:1px solid var(--line);
+  border-radius:17px;
+  padding:18px;
+  margin-bottom:10px;
+}
+
+.feature{
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+}
+
+.icon{
+  width:43px;
+  height:43px;
+  flex:none;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:12px;
+  background:rgba(25,211,138,.08);
+  border:1px solid rgba(25,211,138,.17);
+}
+
+.icon svg{
+  width:20px;
+  height:20px;
+  stroke:#50dfa7;
+}
+
+.feature h3{
+  font-size:14px;
+  margin-bottom:4px;
+}
+
+.feature p{
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.6;
+}
+
+/* DISCLAIMER */
+.disclaimer{
+  background:rgba(255,255,255,.025);
+  border:1px solid var(--line);
+  border-radius:17px;
+  padding:18px;
+  color:#84918d;
+  font-size:11px;
+  line-height:1.7;
+}
+
+.disclaimer strong{
+  color:#e8eeeb;
+}
+
+.disclaimer ul{
+  margin:9px 0 0 17px;
+}
+
+.disclaimer li{
+  margin-bottom:5px;
+}
+
+/* PROMOTED */
+.promoted{
+  text-align:center;
+  padding:17px 15px 8px;
+  color:#64716d;
+  font-size:11px;
+}
+
+.promoted a{
+  color:#6be5b2;
+  font-weight:800;
+  text-decoration:none;
+}
+
+/* FOOTER */
+footer{
+  border-top:1px solid var(--line);
+  margin-top:14px;
+  padding:21px 0 28px;
+}
+
+.footer-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  color:#65716d;
+  font-size:10px;
+}
+
+.footer-inner a{
+  color:#77847f;
+  text-decoration:none;
+}
+
+/* MOBILE */
+@media(max-width:480px){
+
+  .container{
+    padding-left:15px;
+    padding-right:15px;
   }
-  *, *::before, *::after { box-sizing: inherit; }
-  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
-  body {
-    margin: 0; color: var(--ink);
-    background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 50%, var(--bg) 100%);
-    font-family: 'Manrope', system-ui, -apple-system, sans-serif;
-    line-height: 1.6; -webkit-font-smoothing: antialiased;
+
+  .nav{
+    min-height:63px;
   }
-  .wrap { max-width: 640px; margin: 0 auto; padding: 0 24px; }
-  header {
-    position: sticky; top: 0; padding-top: calc(env(safe-area-inset-top, 0px) + 18px);
-    background: var(--bg); border-bottom: 1px solid var(--line); z-index: 10;
+
+  .brand{
+    font-size:12px;
   }
-  header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: 18px; flex-wrap: wrap; }
-  .brand { display: flex; align-items: center; gap: 11px; font-weight: 700; font-size: 1.02rem; letter-spacing: 0.01em; }
-  .brand .mono {
-    width: 34px; height: 34px; border-radius: 9px; flex-shrink: 0;
-    background: var(--card); border: 1px solid var(--gold); color: var(--gold-soft);
-    display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.82rem;
-    font-family: 'Fraunces', serif;
+
+  .brand img{
+    width:35px;
+    height:35px;
   }
-  .pill {
-    display: inline-flex; align-items: center; gap: 6px; background: rgba(198,161,91,0.10); color: var(--gold-soft);
-    border: 1px solid rgba(198,161,91,0.3); padding: 7px 14px; border-radius: 999px;
-    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; white-space: nowrap; text-transform: uppercase;
+
+  .status{
+    font-size:8px;
+    padding:6px 9px;
   }
-  .hero { padding: 52px 0 40px; text-align: center; }
-  .emblem {
-    width: 116px; height: 116px; margin: 0 auto 28px; border-radius: 26px;
-    background: var(--card); border: 1px solid rgba(198,161,91,0.35);
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 0 0 1px rgba(31,156,116,0.15), 0 20px 50px -20px rgba(31,156,116,0.4);
+
+  .hero{
+    padding-top:38px;
   }
-  .emblem svg { width: 46px; height: 46px; }
-  .hero .pill { margin-bottom: 26px; }
-  .hero h1 {
-    font-family: 'Fraunces', Georgia, serif; font-size: clamp(2rem, 7.5vw, 2.7rem); font-weight: 600;
-    margin: 0; line-height: 1.22; letter-spacing: -0.01em;
+
+  .logo-box{
+    width:132px;
+    height:132px;
+    border-radius:28px;
   }
-  .hero h1 .accent { color: var(--emerald-soft); font-style: italic; }
-  .hero h1 .accent-gold { color: var(--gold-soft); }
-  .hero p.lead { color: var(--muted); font-size: 1rem; margin: 24px auto 32px; max-width: 40ch; }
-  .cta {
-    display: inline-flex; align-items: center; justify-content: center; gap: 12px; width: 100%; max-width: 400px;
-    background: var(--emerald); color: #05100C; border: 1px solid rgba(198,161,91,0.5);
-    padding: 16px 24px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 1rem;
-    letter-spacing: 0.01em; transition: transform .15s ease, background .15s ease;
+
+  .logo-box img{
+    border-radius:21px;
   }
-  .cta:active { transform: scale(0.98); }
-  .cta:hover { background: var(--emerald-soft); }
-  .cta svg { width: 19px; height: 19px; flex-shrink: 0; }
-  .microcopy { color: var(--muted); font-size: 0.84rem; margin-top: 18px; letter-spacing: 0.01em; }
-  section { padding: 22px 0; }
-  .feature {
-    display: flex; align-items: flex-start; gap: 16px; background: var(--card); border: 1px solid var(--line);
-    border-radius: 16px; padding: 20px; margin-bottom: 12px;
+
+  h1{
+    font-size:38px;
   }
-  .feature .icon {
-    width: 42px; height: 42px; border-radius: 10px; background: rgba(198,161,91,0.10); border: 1px solid rgba(198,161,91,0.25);
-    flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+
+  .subtitle{
+    font-size:13px;
+    padding:0 4px;
   }
-  .feature .icon svg { width: 20px; height: 20px; stroke: var(--gold-soft); }
-  .feature .body h3 { margin: 0 0 4px; font-size: 1rem; font-weight: 700; }
-  .feature .body p { margin: 0; color: var(--muted); font-size: 0.92rem; }
-  .disclosure {
-    background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px;
-    font-size: 0.87rem; color: var(--muted);
+
+  .market-card{
+    padding:11px 4px;
   }
-  .disclosure strong { color: var(--ink); }
-  .disclosure ul { margin: 10px 0 0; padding-left: 18px; }
-  .disclosure li { margin-bottom: 6px; }
-  h2.section-title { font-family: 'Fraunces', serif; font-size: 1.25rem; font-weight: 600; margin: 0 0 16px; }
-  footer { border-top: 1px solid var(--line); padding: 24px 0 calc(24px + env(safe-area-inset-bottom, 0px)); }
-  footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 16px; justify-content: space-between; align-items: center; font-size: 0.8rem; color: var(--muted); }
-  footer a { color: var(--muted); }
-  .promoted { text-align: center; font-size: 0.82rem; color: var(--muted); padding: 0 24px 8px; }
-  .promoted a { color: var(--gold-soft); font-weight: 700; text-decoration: none; }
+
+  .market-card strong{
+    font-size:11px;
+  }
+
+  .card{
+    padding:16px;
+  }
+}
 </style>
 </head>
+
 <body>
 
+<!-- HEADER -->
 <header>
-  <div class="wrap">
+  <div class="container nav">
+
     <div class="brand">
-      <div class="mono">SL</div>
+      <img
+        src="https://i.ibb.co/whRTmvMW/In-Shot-20260927-011059160.jpg"
+        alt="STOCK LEARNERS Logo"
+      >
       STOCK LEARNERS™
     </div>
-    <div class="pill">Market Education</div>
+
+    <div class="status">Market Education</div>
+
   </div>
 </header>
 
+
 <main>
-  <section class="hero">
-    <div class="wrap">
-      <div class="emblem">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#C6A15B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M3 17l6-6 4 4 8-8"/><path d="M15 6h6v6"/>
-        </svg>
-      </div>
-      <div class="pill">Stock Market Education</div>
-      <h1>Sharp market clarity,<br><span class="accent">seedha aapke</span><br><span class="accent-gold">Telegram par.</span></h1>
-      <p class="lead">Curated daily insights, sector analysis aur premium-quality educational content — un logo ke liye jo bazaar samajh kar khud confident decisions lena chahte hain.</p>
-      <a class="cta" href="https://t.me/+r6_xb9wr9SIwZjc1" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.5 3.5 2.7 10.8c-1.2.5-1.2 1.2-.2 1.5l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.1-2 4.4 3.2c.8.5 1.4.2 1.6-.7l2.9-13.7c.3-1.2-.4-1.7-1.4-1z"/></svg>
-        Join free Telegram
-      </a>
-      <p class="microcopy">Free educational community · No guaranteed returns</p>
-    </div>
-  </section>
 
-  <section>
-    <div class="wrap">
-      <div class="feature">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15.5A1.5 1.5 0 0 1 18.5 20H6.5A2.5 2.5 0 0 1 4 17.5v-12Z"/><path d="M4 17.5A2.5 2.5 0 0 1 6.5 15H20"/></svg></div>
-        <div class="body"><h3>Curated daily market brief</h3><p>Nifty, Sensex aur key sectors ka sharp summary — har subah ready.</p></div>
-      </div>
-      <div class="feature">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div>
-        <div class="body"><h3>In-depth educational breakdowns</h3><p>Charts, results aur news events ka analysis — sirf samjhaane ke liye, advice nahi.</p></div>
-      </div>
-      <div class="feature">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/></svg></div>
-        <div class="body"><h3>Focused community discussion</h3><p>Serious, quality-driven community jahan genuine market perspectives share hote hain.</p></div>
-      </div>
-    </div>
-  </section>
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
 
-  <section>
-    <div class="wrap">
-      <h2 class="section-title">Zaroori jaankari</h2>
-      <div class="disclosure">
-        <strong>Risk disclosure:</strong> Stock market investments subject to market risk. Past performance guarantee of future returns nahi hai.
-        <ul>
-          <li>Yeh channel SEBI-registered investment advisor nahi hai.</li>
-          <li>Saara content sirf education aur general information ke liye hai, personalised financial advice nahi.</li>
-          <li>Koi bhi trading/investment decision lene se pehle apne registered financial advisor se salaah lein.</li>
-          <li>Hum kisi bhi guaranteed profit ya fixed return ka daava nahi karte.</li>
-        </ul>
-      </div>
+    <div class="logo-box">
+      <img
+        src="https://i.ibb.co/whRTmvMW/In-Shot-20260927-011059160.jpg"
+        alt="STOCK LEARNERS™ Logo"
+      >
     </div>
-  </section>
 
-  <section id="legal">
-    <div class="wrap">
-      <h2 class="section-title">Legal &amp; business info</h2>
-      <div class="feature">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
-        <div class="body"><h3 id="privacy">Privacy policy</h3><p>Hum sirf Telegram join ke liye zaroori jaankari collect karte hain. Koi data third parties ko becha nahi jaata.</p></div>
+    <div class="tag">Stock Market Education</div>
+
+    <h1>
+      Learn The Market.<br>
+      <span>Build Your Edge.</span>
+    </h1>
+
+    <p class="subtitle">
+      Daily market insights, sector breakdowns, charts aur
+      educational content — designed for people who want to
+      understand the market better.
+    </p>
+
+    <a
+      class="telegram-btn"
+      href="https://t.me/+r6_xb9wr9SIwZjc1"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <svg viewBox="0 0 24 24">
+        <path d="M21.5 3.5 2.7 10.8c-1.2.5-1.2 1.2-.2 1.5l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.1-2 4.4 3.2c.8.5 1.4.2 1.6-.7l2.9-13.7c.3-1.2-.4-1.7-1.4-1z"/>
+      </svg>
+      Join Free Telegram
+    </a>
+
+    <div class="note">
+      Free educational community · No guaranteed returns
+    </div>
+
+    <div class="market-strip">
+      <div class="market-card">
+        <small>Market</small>
+        <strong>Education</strong>
       </div>
-      <div class="feature">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z"/><path d="M14 2v6h6"/></svg></div>
-        <div class="body"><h3 id="terms">Terms of use</h3><p>Yeh channel sirf educational content provide karta hai. Content ko investment advice na maanein.</p></div>
+
+      <div class="market-card">
+        <small>Content</small>
+        <strong>Daily</strong>
+      </div>
+
+      <div class="market-card">
+        <small>Community</small>
+        <strong>Free</strong>
       </div>
     </div>
-  </section>
+
+  </div>
+</section>
+
+
+<!-- FEATURES -->
+<section>
+  <div class="container">
+
+    <h2 class="section-title">What You Get</h2>
+
+    <div class="card">
+      <div class="feature">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"
+          stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19V5"/>
+            <path d="M4 19h16"/>
+            <path d="m7 15 4-5 3 3 5-7"/>
+          </svg>
+        </div>
+
+        <div>
+          <h3>Daily Market Brief</h3>
+          <p>
+            Nifty, Sensex aur important market developments
+            ko simple educational format mein samjhein.
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card">
+      <div class="feature">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"
+          stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 4h14v16H5z"/>
+            <path d="M8 8h8M8 12h8M8 16h5"/>
+          </svg>
+        </div>
+
+        <div>
+          <h3>Educational Breakdowns</h3>
+          <p>
+            Charts, sectors, results aur market events ke
+            educational breakdowns.
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card">
+      <div class="feature">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"
+          stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="3"/>
+            <path d="M5 20a7 7 0 0 1 14 0"/>
+          </svg>
+        </div>
+
+        <div>
+          <h3>Focused Community</h3>
+          <p>
+            Market learning aur discussion ke liye focused
+            Telegram community.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- RISK -->
+<section>
+  <div class="container">
+
+    <h2 class="section-title">Important Information</h2>
+
+    <div class="disclaimer">
+
+      <strong>Risk Disclosure</strong><br>
+
+      Stock market investments are subject to market risks.
+      Past performance future returns ki guarantee nahi hai.
+
+      <ul>
+        <li>
+          Yeh platform SEBI-registered investment advisor nahi hai.
+        </li>
+
+        <li>
+          Content education aur general information ke liye hai.
+        </li>
+
+        <li>
+          Content ko personalised financial advice na samjhein.
+        </li>
+
+        <li>
+          Koi guaranteed profit ya fixed return promise nahi kiya jaata.
+        </li>
+
+        <li>
+          Investment decision lene se pehle qualified financial
+          professional se advice lene par vichar karein.
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- LEGAL -->
+<section>
+  <div class="container">
+
+    <h2 class="section-title">Legal & Business Info</h2>
+
+    <div class="card">
+      <div class="feature">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"
+          stroke-linecap="round" stroke-linejoin="round">
+            <rect x="5" y="10" width="14" height="10" rx="2"/>
+            <path d="M8 10V7a4 4 0 0 1 8 0v3"/>
+          </svg>
+        </div>
+
+        <div>
+          <h3>Privacy Policy</h3>
+          <p>
+            User privacy ko respect kiya jaata hai. Personal
+            information ko unnecessary third parties ke saath
+            sell nahi kiya jaata.
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card">
+      <div class="feature">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"
+          stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 3h9l4 4v14H6z"/>
+            <path d="M14 3v5h5"/>
+          </svg>
+        </div>
+
+        <div>
+          <h3>Terms of Use</h3>
+          <p>
+            Website aur Telegram content educational purposes ke
+            liye hai aur investment advice nahi hai.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 </main>
 
-<p class="promoted">Promoted By <a href="https://t.me/+3XoqJNLxYHswNTc1" target="_blank" rel="noopener">AD BUILD AGENCY</a></p>
 
+<!-- PROMOTED BY -->
+<div class="promoted">
+  Promoted By
+  <a
+    href="https://t.me/+3XoqJNLxYHswNTc1"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    AD BUILD AGENCY
+  </a>
+</div>
+
+
+<!-- FOOTER -->
 <footer>
-  <div class="wrap">
-    <span>&copy; 2026 STOCK LEARNERS™</span>
-    <span><a href="#privacy">Privacy Policy</a> · <a href="#terms">Terms</a></span>
+  <div class="container footer-inner">
+
+    <span>
+      © 2026 STOCK LEARNERS™
+    </span>
+
+    <span>
+      Educational Platform
+    </span>
+
   </div>
 </footer>
 
