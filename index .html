@@ -1,443 +1,193 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Trade With Munaaf</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>STOCK LEARNERSâ„¢ â€” Market Education on Telegram</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
-
-body{
-background:#0f172a;
-display:flex;
-justify-content:center;
-align-items:center;
-min-height:100vh;
-color:#fff;
-}
-
-/* CARD */
-
-.container{
-width:95%;
-max-width:420px;
-padding:30px 25px;
-border-radius:18px;
-
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(12px);
-
-border:1px solid rgba(255,255,255,0.08);
-
-box-shadow:0 20px 60px rgba(0,0,0,0.6);
-text-align:center;
-}
-
-/* LOGO */
-
-.logo{
-width:80px;
-height:80px;
-border-radius:50%;
-border:2px solid #FFD700;
-margin-bottom:12px;
-}
-
-/* TEXT */
-
-h1{
-font-size:22px;
-color:#FFD700;
-margin-bottom:6px;
-}
-
-h2{
-font-size:15px;
-opacity:0.9;
-margin-bottom:10px;
-}
-
-.sub{
-font-size:13px;
-opacity:0.7;
-margin-bottom:18px;
-}
-
-/* BUTTON */
-
-.btn{
-display:block;
-text-decoration:none;
-background:#22c55e;
-color:#000;
-font-weight:700;
-padding:16px;
-border-radius:10px;
-margin:12px 0;
-transition:0.3s;
-}
-
-.btn:hover{
-background:#16a34a;
-transform:scale(1.03);
-}
-
-/* TRUST BOX */
-
-.trust{
-background:rgba(0,255,150,0.08);
-padding:10px;
-border-radius:10px;
-font-size:13px;
-margin-bottom:15px;
-border:1px solid rgba(0,255,150,0.2);
-}
-
-/* LIST */
-
-.points{
-list-style:none;
-font-size:14px;
-text-align:left;
-margin:15px 0;
-}
-
-.points li{
-margin:8px 0;
-}
-
-/* URGENCY */
-
-.timer{
-margin-top:10px;
-font-size:13px;
-color:#facc15;
-}
-
-/* SOCIAL PROOF */
-
-.proof{
-margin-top:12px;
-font-size:12px;
-opacity:0.7;
-}
-
-/* FOOTER BRAND */
-
-.footer{
-margin-top:20px;
-font-size:12px;
-opacity:0.6;
-}
-
-.footer a{
-color:#38bdf8;
-text-decoration:none;
-font-weight:600;
-}
-
-.footer a:hover{
-text-decoration:underline;
-}
-
-/* RISK */
-
-.risk{
-margin-top:10px;
-font-size:11px;
-opacity:0.5;
-}
-
+  :root {
+    --bg: #070F0C;
+    --bg2: #0B1C15;
+    --card: #10221B;
+    --line: rgba(230,225,210,0.09);
+    --ink: #F3F0E7;
+    --muted: #8FA098;
+    --emerald: #1F9C74;
+    --emerald-soft: #2CB988;
+    --gold: #C6A15B;
+    --gold-soft: #DCC08A;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *, *::before, *::after { box-sizing: inherit; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  body {
+    margin: 0; color: var(--ink);
+    background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 50%, var(--bg) 100%);
+    font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+    line-height: 1.6; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 0 24px; }
+  header {
+    position: sticky; top: 0; padding-top: calc(env(safe-area-inset-top, 0px) + 18px);
+    background: var(--bg); border-bottom: 1px solid var(--line); z-index: 10;
+  }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: 18px; flex-wrap: wrap; }
+  .brand { display: flex; align-items: center; gap: 11px; font-weight: 700; font-size: 1.02rem; letter-spacing: 0.01em; }
+  .brand .mono {
+    width: 34px; height: 34px; border-radius: 9px; flex-shrink: 0;
+    background: var(--card); border: 1px solid var(--gold); color: var(--gold-soft);
+    display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.82rem;
+    font-family: 'Fraunces', serif;
+  }
+  .pill {
+    display: inline-flex; align-items: center; gap: 6px; background: rgba(198,161,91,0.10); color: var(--gold-soft);
+    border: 1px solid rgba(198,161,91,0.3); padding: 7px 14px; border-radius: 999px;
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; white-space: nowrap; text-transform: uppercase;
+  }
+  .hero { padding: 52px 0 40px; text-align: center; }
+  .emblem {
+    width: 116px; height: 116px; margin: 0 auto 28px; border-radius: 26px;
+    background: var(--card); border: 1px solid rgba(198,161,91,0.35);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0 0 1px rgba(31,156,116,0.15), 0 20px 50px -20px rgba(31,156,116,0.4);
+  }
+  .emblem svg { width: 46px; height: 46px; }
+  .hero .pill { margin-bottom: 26px; }
+  .hero h1 {
+    font-family: 'Fraunces', Georgia, serif; font-size: clamp(2rem, 7.5vw, 2.7rem); font-weight: 600;
+    margin: 0; line-height: 1.22; letter-spacing: -0.01em;
+  }
+  .hero h1 .accent { color: var(--emerald-soft); font-style: italic; }
+  .hero h1 .accent-gold { color: var(--gold-soft); }
+  .hero p.lead { color: var(--muted); font-size: 1rem; margin: 24px auto 32px; max-width: 40ch; }
+  .cta {
+    display: inline-flex; align-items: center; justify-content: center; gap: 12px; width: 100%; max-width: 400px;
+    background: var(--emerald); color: #05100C; border: 1px solid rgba(198,161,91,0.5);
+    padding: 16px 24px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 1rem;
+    letter-spacing: 0.01em; transition: transform .15s ease, background .15s ease;
+  }
+  .cta:active { transform: scale(0.98); }
+  .cta:hover { background: var(--emerald-soft); }
+  .cta svg { width: 19px; height: 19px; flex-shrink: 0; }
+  .microcopy { color: var(--muted); font-size: 0.84rem; margin-top: 18px; letter-spacing: 0.01em; }
+  section { padding: 22px 0; }
+  .feature {
+    display: flex; align-items: flex-start; gap: 16px; background: var(--card); border: 1px solid var(--line);
+    border-radius: 16px; padding: 20px; margin-bottom: 12px;
+  }
+  .feature .icon {
+    width: 42px; height: 42px; border-radius: 10px; background: rgba(198,161,91,0.10); border: 1px solid rgba(198,161,91,0.25);
+    flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+  }
+  .feature .icon svg { width: 20px; height: 20px; stroke: var(--gold-soft); }
+  .feature .body h3 { margin: 0 0 4px; font-size: 1rem; font-weight: 700; }
+  .feature .body p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+  .disclosure {
+    background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px;
+    font-size: 0.87rem; color: var(--muted);
+  }
+  .disclosure strong { color: var(--ink); }
+  .disclosure ul { margin: 10px 0 0; padding-left: 18px; }
+  .disclosure li { margin-bottom: 6px; }
+  h2.section-title { font-family: 'Fraunces', serif; font-size: 1.25rem; font-weight: 600; margin: 0 0 16px; }
+  footer { border-top: 1px solid var(--line); padding: 24px 0 calc(24px + env(safe-area-inset-bottom, 0px)); }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 16px; justify-content: space-between; align-items: center; font-size: 0.8rem; color: var(--muted); }
+  footer a { color: var(--muted); }
+  .promoted { text-align: center; font-size: 0.82rem; color: var(--muted); padding: 0 24px 8px; }
+  .promoted a { color: var(--gold-soft); font-weight: 700; text-decoration: none; }
 </style>
 </head>
-
 <body>
 
-<div class="container">
+<header>
+  <div class="wrap">
+    <div class="brand">
+      <div class="mono">SL</div>
+      STOCK LEARNERSâ„¢
+    </div>
+    <div class="pill">Market Education</div>
+  </div>
+</header>
 
-<img src="https://i.ibb.co/XP3kvGh/gw-Wdz-J5-L7-R64-Xz-Sm-SRd-LQH1in-GIlyb-Y0-DMal-Vyj-Sh-Pc-NIy-DDX-Mr-B5h-Q5l-ZQBLQZI3-z-SK47-I1-Ww-B-Bpse.jpg" class="logo">
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="emblem">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#C6A15B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 17l6-6 4 4 8-8"/><path d="M15 6h6v6"/>
+        </svg>
+      </div>
+      <div class="pill">Stock Market Education</div>
+      <h1>Sharp market clarity,<br><span class="accent">seedha aapke</span><br><span class="accent-gold">Telegram par.</span></h1>
+      <p class="lead">Curated daily insights, sector analysis aur premium-quality educational content â€” un logo ke liye jo bazaar samajh kar khud confident decisions lena chahte hain.</p>
+      <a class="cta" href="https://t.me/+r6_xb9wr9SIwZjc1" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.5 3.5 2.7 10.8c-1.2.5-1.2 1.2-.2 1.5l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.1-2 4.4 3.2c.8.5 1.4.2 1.6-.7l2.9-13.7c.3-1.2-.4-1.7-1.4-1z"/></svg>
+        Join free Telegram
+      </a>
+      <p class="microcopy">Free educational community Â· No guaranteed returns</p>
+    </div>
+  </section>
 
-<h1>WIZARD TRADER</h1>
-<h2>NIFTY • BANKNIFTY • OPTIONS</h2>
+  <section>
+    <div class="wrap">
+      <div class="feature">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15.5A1.5 1.5 0 0 1 18.5 20H6.5A2.5 2.5 0 0 1 4 17.5v-12Z"/><path d="M4 17.5A2.5 2.5 0 0 1 6.5 15H20"/></svg></div>
+        <div class="body"><h3>Curated daily market brief</h3><p>Nifty, Sensex aur key sectors ka sharp summary â€” har subah ready.</p></div>
+      </div>
+      <div class="feature">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div>
+        <div class="body"><h3>In-depth educational breakdowns</h3><p>Charts, results aur news events ka analysis â€” sirf samjhaane ke liye, advice nahi.</p></div>
+      </div>
+      <div class="feature">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/></svg></div>
+        <div class="body"><h3>Focused community discussion</h3><p>Serious, quality-driven community jahan genuine market perspectives share hote hain.</p></div>
+      </div>
+    </div>
+  </section>
 
-<p class="sub">
-Daily Intraday Trading Signals & Analysis
-</p>
+  <section>
+    <div class="wrap">
+      <h2 class="section-title">Zaroori jaankari</h2>
+      <div class="disclosure">
+        <strong>Risk disclosure:</strong> Stock market investments subject to market risk. Past performance guarantee of future returns nahi hai.
+        <ul>
+          <li>Yeh channel SEBI-registered investment advisor nahi hai.</li>
+          <li>Saara content sirf education aur general information ke liye hai, personalised financial advice nahi.</li>
+          <li>Koi bhi trading/investment decision lene se pehle apne registered financial advisor se salaah lein.</li>
+          <li>Hum kisi bhi guaranteed profit ya fixed return ka daava nahi karte.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-<!-- TOP BUTTON -->
-<a href="https://t.me/+tfH-Sgz9H2kwNWZl" class="btn">
- Join Free Telegram Channel
-</a>
+  <section id="legal">
+    <div class="wrap">
+      <h2 class="section-title">Legal &amp; business info</h2>
+      <div class="feature">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+        <div class="body"><h3 id="privacy">Privacy policy</h3><p>Hum sirf Telegram join ke liye zaroori jaankari collect karte hain. Koi data third parties ko becha nahi jaata.</p></div>
+      </div>
+      <div class="feature">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z"/><path d="M14 2v6h6"/></svg></div>
+        <div class="body"><h3 id="terms">Terms of use</h3><p>Yeh channel sirf educational content provide karta hai. Content ko investment advice na maanein.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
 
-<div class="trust">
- Trusted by 5,000+ Traders <br>
- Daily Consistent Setups
-</div>
+<p class="promoted">Promoted By <a href="https://t.me/+3XoqJNLxYHswNTc1" target="_blank" rel="noopener">AD BUILD AGENCY</a></p>
 
-<ul class="points">
-<li> 5–7 High Probability Trades</li>
-<li> Exact Entry, SL & Target</li>
-<li> Beginner Friendly Guidance</li>
-<li> Live Market Updates</li>
-</ul>
-
-<!-- BOTTOM BUTTON -->
-<a href="https://t.me/+tfH-Sgz9H2kwNWZl" class="btn">
- Join Free Telegram Channel
-</a>
-
-<div class="timer">
- Free Access Closing Soon
-</div>
-
-<div class="proof">
- Limited Seats • Active Community
-</div>
-
-<p class="risk">
- Market investments are subject to risk
-</p>
-
-<!-- CLEAN FOOTER -->
-<div class="footer">
-Powered by 
-<a href="https://t.me/+3XoqJNLxYHswNTc1" target="_blank">
-AdsBuild Agency
-</a>
-</div>
-
-</div>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Trade With Munaaf</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
-
-body{
-background:#0f172a;
-display:flex;
-justify-content:center;
-align-items:center;
-min-height:100vh;
-color:#fff;
-}
-
-/* CARD */
-
-.container{
-width:95%;
-max-width:420px;
-padding:30px 25px;
-border-radius:18px;
-
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(12px);
-
-border:1px solid rgba(255,255,255,0.08);
-
-box-shadow:0 20px 60px rgba(0,0,0,0.6);
-text-align:center;
-}
-
-/* LOGO */
-
-.logo{
-width:80px;
-height:80px;
-border-radius:50%;
-border:2px solid #FFD700;
-margin-bottom:12px;
-}
-
-/* TEXT */
-
-h1{
-font-size:22px;
-color:#FFD700;
-margin-bottom:6px;
-}
-
-h2{
-font-size:15px;
-opacity:0.9;
-margin-bottom:10px;
-}
-
-.sub{
-font-size:13px;
-opacity:0.7;
-margin-bottom:18px;
-}
-
-/* BUTTON */
-
-.btn{
-display:block;
-text-decoration:none;
-background:#22c55e;
-color:#000;
-font-weight:700;
-padding:16px;
-border-radius:10px;
-margin:12px 0;
-transition:0.3s;
-}
-
-.btn:hover{
-background:#16a34a;
-transform:scale(1.03);
-}
-
-/* TRUST BOX */
-
-.trust{
-background:rgba(0,255,150,0.08);
-padding:10px;
-border-radius:10px;
-font-size:13px;
-margin-bottom:15px;
-border:1px solid rgba(0,255,150,0.2);
-}
-
-/* LIST */
-
-.points{
-list-style:none;
-font-size:14px;
-text-align:left;
-margin:15px 0;
-}
-
-.points li{
-margin:8px 0;
-}
-
-/* URGENCY */
-
-.timer{
-margin-top:10px;
-font-size:13px;
-color:#facc15;
-}
-
-/* SOCIAL PROOF */
-
-.proof{
-margin-top:12px;
-font-size:12px;
-opacity:0.7;
-}
-
-/* FOOTER BRAND */
-
-.footer{
-margin-top:20px;
-font-size:12px;
-opacity:0.6;
-}
-
-.footer a{
-color:#38bdf8;
-text-decoration:none;
-font-weight:600;
-}
-
-.footer a:hover{
-text-decoration:underline;
-}
-
-/* RISK */
-
-.risk{
-margin-top:10px;
-font-size:11px;
-opacity:0.5;
-}
-
-</style>
-</head>
-
-<body>
-
-<div class="container">
-
-<img src="https://i.ibb.co/XP3kvGh/gw-Wdz-J5-L7-R64-Xz-Sm-SRd-LQH1in-GIlyb-Y0-DMal-Vyj-Sh-Pc-NIy-DDX-Mr-B5h-Q5l-ZQBLQZI3-z-SK47-I1-Ww-B-Bpse.jpg" class="logo">
-
-<h1>WIZARD TRADER</h1>
-<h2>NIFTY • BANKNIFTY • OPTIONS</h2>
-
-<p class="sub">
-Daily Intraday Trading Signals & Analysis
-</p>
-
-<!-- TOP BUTTON -->
-<a href="https://t.me/+tfH-Sgz9H2kwNWZl" class="btn">
- Join Free Telegram Channel
-</a>
-
-<div class="trust">
- Trusted by 5,000+ Traders <br>
- Daily Consistent Setups
-</div>
-
-<ul class="points">
-<li> 5–7 High Probability Trades</li>
-<li> Exact Entry, SL & Target</li>
-<li> Beginner Friendly Guidance</li>
-<li> Live Market Updates</li>
-</ul>
-
-<!-- BOTTOM BUTTON -->
-<a href="https://t.me/+tfH-Sgz9H2kwNWZl" class="btn">
- Join Free Telegram Channel
-</a>
-
-<div class="timer">
- Free Access Closing Soon
-</div>
-
-<div class="proof">
- Limited Seats • Active Community
-</div>
-
-<p class="risk">
- Market investments are subject to risk
-</p>
-
-<!-- CLEAN FOOTER -->
-<div class="footer">
-Powered by 
-<a href="https://t.me/+3XoqJNLxYHswNTc1" target="_blank">
-AdsBuild Agency
-</a>
-</div>
-
-</div>
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 STOCK LEARNERSâ„¢</span>
+    <span><a href="#privacy">Privacy Policy</a> Â· <a href="#terms">Terms</a></span>
+  </div>
+</footer>
 
 </body>
 </html>
